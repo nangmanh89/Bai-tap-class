@@ -1,38 +1,22 @@
-class House {
-    constructor(name, price) {
-        this.name = name;
-        this.price = price;
-        this.getprice = function () {
-            return this.price
-        }
-    };
-    getinfo = function () {
-        return this.name + ' have prices are: ' + this.price
+function parentsHouse(name, price) {
+    this.name = name
+    this.price = price
+    this.showprice = function () {
+        console.log(this.price)
     }
 }
-
-class childrenHouse extends House {
-    constructor(name, price, area, sologan) {
-        super(name, price)
-        this.area = area
-        this.sologan = sologan
+function childrenHouse(area) {
+    this.area = area;
+    this.showname = function () {
+        console.log(this.name)
     }
 }
+childrenHouse.prototype = new parentsHouse()
 
-class villa extends childrenHouse {
-    constructor(name, price, area, sologan, pool) {
-        super(name, price, area, sologan)
-        this.pool = pool
-    }
-}
 
-let nationalChildrenHouse = new childrenHouse('MrManh', '3000$', '5000m2', 'Manh so handsome')
-console.log(nationalChildrenHouse)
-let myVilla = new villa('ManhVilla', '10MillionDollars', '100000m2', ':D', '')
-console.log(myVilla)
-console.log(myVilla.getinfo())
-console.log(myVilla.getprice())
-
-class myHouse {
-
-}
+let Children1 = new childrenHouse('300m2')
+Children1.name = 'Hoa Sen'
+Children1.showname()
+Children1.price = '400$'
+Children1.showprice()
+// console.log(manhChildren)
