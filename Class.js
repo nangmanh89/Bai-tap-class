@@ -1,22 +1,34 @@
-function parentsHouse(name, price) {
-    this.name = name
-    this.price = price
-    this.showprice = function () {
-        console.log(this.price)
-    }
-}
-function childrenHouse(area) {
-    this.area = area;
+function House(name, area) {
+    let constructor = () => {
+      this.name = name
+      this.area = area
+    };
+    constructor()
+  
     this.showname = function () {
-        console.log(this.name)
+      console.log(this.name)
+      console.log(this.area)
+    };
+  }
+  
+  
+  function childrenHouse(price, name, area) {
+    House.call(this, name, area)
+    let contructor = () => {
+      this.price = price
     }
-}
-childrenHouse.prototype = new parentsHouse()
-
-
-let Children1 = new childrenHouse('300m2')
-Children1.name = 'Hoa Sen'
-Children1.showname()
-Children1.price = '400$'
-Children1.showprice()
-// console.log(manhChildren)
+    contructor()
+  
+    this.showPrice = function () {
+      console.log(this.price)
+    }
+  }
+  
+  childrenHouse.prototype = new House()
+  
+  
+  let nationalChildren = new childrenHouse('1000$', 'Hoa Sen', '3000m2')
+  console.log(childrenHouse.prototype)
+  nationalChildren.showname()
+  nationalChildren.showPrice()
+  
